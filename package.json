@@ -1,0 +1,15 @@
+{
+  "name": "zt-calculator",
+  "version": "1.0.0",
+  "description": "A website-embedable calculator for Device ZT.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/NinoMaruszewski/zt-calculator/src"
+  },
+  "author": "Nino Maruszewski and Alem Snyder",
+  "license": "MIT"
+}
