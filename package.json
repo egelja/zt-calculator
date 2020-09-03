@@ -11,5 +11,6 @@
     "url": "https://bitbucket.org/NinoMaruszewski/zt-calculator/src"
   },
   "author": "Nino Maruszewski and Alem Snyder",
-  "license": "MIT"
+  "license": "MIT",
+  "prettier":{"tabWidth": 4}
 }
