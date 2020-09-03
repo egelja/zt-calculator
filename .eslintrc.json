@@ -92,6 +92,7 @@
 		"space-infix-ops": "error",
 		"space-unary-ops": "error",
 		"yoda": "error",
-		"camelcase": "error"
+		"camelcase": "error",
+		"eqeqeq": "error"
 	}
 }
