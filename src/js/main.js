@@ -7,6 +7,7 @@ input.addEventListener("change", function (e) {
         },
         dynamicTyping: true,
         worker: true,
+        skipEmptyLines: true,
     });
 });
 
@@ -31,5 +32,6 @@ function setToText() {
         },
         dynamicTyping: true,
         worker: true,
+        skipEmptyLines: false,
     });
 }
