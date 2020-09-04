@@ -12,12 +12,23 @@ input.addEventListener("change", function (e) {
 });
 
 function setToFile(parsedCSV) {
-    document.getElementById("output").innerHTML = JSON.stringify(parsedCSV.data, null, 4);
+    document.getElementById("output").innerHTML = JSON.stringify(
+        parsedCSV.data,
+        null,
+        4
+    );
     console.log(parsedCSV.data);
 }
 
 function setToText() {
-    document.getElementById("output").innerHTML = document.getElementById(
-        "CSVText"
-    ).value;
+    Papa.parse(document.getElementById("CSVText").value, {
+        complete: function (results) {
+            document.getElementById("output").innerHTML = JSON.stringify(
+                results.data,
+                null,
+                4
+            );
+            console.log(results.data);
+        },
+    });
 }
