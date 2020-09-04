@@ -10,8 +10,15 @@ function OpenInput() {
     //var file = filesInput.item(0);
     var reader = new FileReader();
     reader.onload = function (event) {
-        //csvReader(event.target.result);
-        document.getElementById("demo").innerHTML = event.target.result;
+        var csvArray = csvReader(event.target.result);
+        var textArray = [];
+        for (let i = 0; i < csvArray.length; i++) {
+            const element = csvArray[i];
+            textArray[i] = element.join("\t");
+        }
+        text = textArray.join("\n");
+        document.getElementById("output").innerHTML = text;
+        console.log(text);
     }
     reader.readAsText(file);
 }
@@ -22,12 +29,13 @@ function csvReader(CSVText) {
     for (i = 0; i < csvArray.length; i++) {
         csvArray[i] = csvArray[i].split(",");
     }
+    return csvArray;
 }
 
 function SetToFile() {
-  document.getElementById("demo").innerHTML = OpenInput(csvReader);
+  document.getElementById("output").innerHTML = OpenInput(csvReader);
 }
 
 function SetToText() {
-  document.getElementById("demo").innerHTML = document.getElementById("CSVText").value;
+  document.getElementById("output").innerHTML = document.getElementById("CSVText").value;
 }
