@@ -3,15 +3,17 @@ function OpenFile(FilePath) {
     window.open(FilePath); // Wow The worst wrapper in history
 }
 
-function OpenInput(csvReader, filesInput) {
-    var filesInput = document.getElementById("CSVFile").value;
-    var file = filesInput.files.item(0);
+function OpenInput() {
+    var file = document.getElementById("CSVFile").files[0];
+    console.log(file instanceof Blob)
+    //var file = filesInput.files.item(0);
+    //var file = filesInput.item(0);
     var reader = new FileReader();
-    reader.onload = function () {
-        csvReader(reader.result);
+    reader.onload = function (event) {
+        //csvReader(event.target.result);
+        document.getElementById("demo").innerHTML = event.target.result;
     }
-    csvText = reader.readAsText(file);
-    return csvText;
+    reader.readAsText(file);
 }
 
 function csvReader(CSVText) {
@@ -22,6 +24,10 @@ function csvReader(CSVText) {
     }
 }
 
-function ChangeContent(params) {
-  document.getElementById("demo").innerHTML = OpenInput(csvReader, OpenInput);
+function ChangeContent() {
+  document.getElementById("demo").innerHTML = OpenInput(csvReader);
+}
+
+function ChangeContent2() {
+  document.getElementById("demo").innerHTML = document.getElementById("CSVText").value;
 }
