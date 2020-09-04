@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html>
 
-
-<script src="csvReader.js"></script>
+<head>
+    <title>ZT Calculator</title>
+</head>
 
 
 
 <body>
 
     <h2>What Can JavaScript Do?</h2>
-
     <p id="demo">JavaScript can change HTML content.</p>
-
     <span id = "output" style="white-space: pre-wrap">output text</span>
-
     <br>
 
     <button type="button" onclick='SetToFile()'>Set To File</button>
-
     <button type="button" onclick='SetToText()'>Set To Text</button>
 
     <br>
@@ -28,7 +25,8 @@
 
     <input id="CSVText" type="text" name="CSVText" Value="Input Text" style="font-size:12pt;height:420px;width:600px;">
 
-
+    <script src="js/papaparse"></script>
+    <script src="js/csvReader"></script>
 </body>
 
 </html>
