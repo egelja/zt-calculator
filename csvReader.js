@@ -24,10 +24,10 @@ function csvReader(CSVText) {
     }
 }
 
-function ChangeContent() {
+function SetToFile() {
   document.getElementById("demo").innerHTML = OpenInput(csvReader);
 }
 
-function ChangeContent2() {
+function SetToText() {
   document.getElementById("demo").innerHTML = document.getElementById("CSVText").value;
 }
