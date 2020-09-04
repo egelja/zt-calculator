@@ -5,7 +5,6 @@ input.addEventListener("change", function (e) {
         complete: function (results) {
             setToFile(results);
         },
-        header: true,
         dynamicTyping: true,
         worker: true,
     });
@@ -30,5 +29,7 @@ function setToText() {
             );
             console.log(results.data);
         },
+        dynamicTyping: true,
+        worker: true,
     });
 }
