@@ -30,7 +30,7 @@ input.addEventListener("change", function (e) {
 
 function setToFile(parsedCSV) {
     document.getElementById("output").innerHTML = JSON.stringify(
-        parsedCSV,
+        parsedCSV.data.slice(0, 3),
         null,
         4
     );
@@ -41,7 +41,7 @@ function setToText() {
     Papa.parse(document.getElementById("CSVText").value, {
         complete: function (results) {
             document.getElementById("output").innerHTML = JSON.stringify(
-                results.data,
+                results.data.slice(0, 3),
                 null,
                 4
             );
@@ -51,4 +51,9 @@ function setToText() {
         worker: true,
         skipEmptyLines: false,
     });
+}
+
+
+function calculateZT() {
+
 }
