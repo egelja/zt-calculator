@@ -9,6 +9,20 @@
 
 <body>
 
+    <script type="text/javascript">
+        function showCSVPaste() {
+            document.getElementById('CSVText').style.display = '';
+            document.getElementById('showPaste').style.display = 'none';
+            document.getElementById('hidePaste').style.display = '';
+        }
+
+        function hideCSVPaste() {
+            document.getElementById('CSVText').style.display = 'none';
+            document.getElementById('showPaste').style.display = '';
+            document.getElementById('hidePaste').style.display = 'none';
+        }
+    </script>
+
     <h2>ZT Calculator</h2>
     <p id="demo">Calculates the ZT of a thermoelectric device.</p>
 
@@ -22,13 +36,19 @@
 
     <br>
 
-    <input id="CSVText" type="text" name="CSVText" value="Paste CSV" style="font-size:12pt;height:420px;width:600px;">
-
+    <button id="showPaste" onclick="showCSVPaste()">Show CSV PasteBox</button>
+    <button id="hidePaste" style="display: none;" onclick="hideCSVPaste()">Hide CSV PasteBox</button>
+    <div>
+    <input id="CSVText" type="text" name="CSVText" value="Paste CSV"
+        style="font-size: 12pt; height: 420px; width: 600px; display: none;">
+    </div>
     <br>
 
-    <span id = "output" style="white-space: pre-wrap">output text</span>
+    <span id="output" style="white-space: pre-wrap">output text</span>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js" integrity="sha512-rKFvwjvE4liWPlFnvH4ZhRDfNZ9FOpdkD/BU5gAIA3VS3vOQrQ5BjKgbO3kxebKhHdHcNUHLqxQYSoxee9UwgA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"
+        integrity="sha512-rKFvwjvE4liWPlFnvH4ZhRDfNZ9FOpdkD/BU5gAIA3VS3vOQrQ5BjKgbO3kxebKhHdHcNUHLqxQYSoxee9UwgA=="
+        crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
 </body>
 
