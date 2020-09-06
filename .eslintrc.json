@@ -5,7 +5,7 @@
 	],
 	"root": true,
 	"env": {
-		"node": true,
+		"browser": true,
 		"es6": true
 	},
 	"parserOptions": {
@@ -14,14 +14,10 @@
 	"rules": {
 		"brace-style": [
 			"error",
-			"stroustrup",
+			"1tbs",
 			{
 				"allowSingleLine": true
 			}
-		],
-		"comma-dangle": [
-			"error",
-			"always-multiline"
 		],
 		"comma-spacing": "error",
 		"comma-style": "error",

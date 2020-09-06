@@ -2,5 +2,6 @@
     "cSpell.words": [
         "embedable",
         "papaparse"
-    ]
+    ],
+    "eslint.lintTask.options": ". -c .\\.eslintrc.json",
 }
