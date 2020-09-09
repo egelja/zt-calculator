@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="./css/styles.css">
     <title>ZT Calculator</title>
 </head>
 
@@ -10,16 +11,16 @@
 <body>
 
     <script type="text/javascript">
-        function showCSVPaste() {
-            document.getElementById('CSVText').style.display = '';
-            document.getElementById('showPaste').style.display = 'none';
-            document.getElementById('hidePaste').style.display = '';
+        function showElement(elementId, showButtonId, hideButtonId) {
+            document.getElementById(elementId).style.display = '';
+            document.getElementById(showButtonId).style.display = 'none';
+            document.getElementById(hideButtonId).style.display = '';
         }
 
-        function hideCSVPaste() {
-            document.getElementById('CSVText').style.display = 'none';
-            document.getElementById('showPaste').style.display = '';
-            document.getElementById('hidePaste').style.display = 'none';
+        function hideElement(elementId, showButtonId, hideButtonId) {
+            document.getElementById(elementId).style.display = 'none';
+            document.getElementById(showButtonId).style.display = '';
+            document.getElementById(hideButtonId).style.display = 'none';
         }
     </script>
 
@@ -36,15 +37,66 @@
 
     <br>
 
-    <button id="showPaste" onclick="showCSVPaste()">Show CSV PasteBox</button>
-    <button id="hidePaste" style="display: none;" onclick="hideCSVPaste()">Hide CSV PasteBox</button>
+    <button id="showPaste" onclick="showElement('CSVText', 'showPaste', 'hidePaste')">Show CSV PasteBox</button>
+    <button id="hidePaste" style="display: none;" onclick="hideElement('CSVText', 'showPaste', 'hidePaste')">Hide CSV
+        PasteBox</button>
     <div>
-    <input id="CSVText" type="text" name="CSVText" value="Paste CSV"
-        style="font-size: 12pt; height: 420px; width: 600px; display: none;">
+        <input id="CSVText" type="text" name="CSVText" value="Paste CSV"
+            style="font-size: 12pt; height: 420px; width: 600px; display: none;">
     </div>
+
     <br>
 
     <span id="output" style="white-space: pre-wrap">output text</span>
+
+    <br>
+
+    <button id="showCharts" onclick="showElement('charts', 'showCharts', 'hideCharts')">Show Charts</button>
+    <button id="hideCharts" onclick="hideElement('charts', 'showCharts', 'hideCharts')" style="display: none;">Hide
+        Charts</button>
+
+    <div id="charts" style="display: none;">
+        <div class="row">
+            <div class="col">
+                Chart 1
+            </div>
+            <div class="col">
+                Chart 2
+            </div>
+            <div class="col">
+                Chart 3
+            </div>
+            <div class="col">
+                Chart 4
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                Chart 5
+            </div>
+            <div class="col">
+                Chart 6
+            </div>
+            <div class="col">
+                Chart 7
+            </div>
+            <div class="col">
+                Chart 8
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                Chart 9
+            </div>
+            <div class="col">
+                Chart 10
+            </div>
+            <div class="col">
+                Chart 11
+            </div>
+        </div>
+    </div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"
         integrity="sha512-rKFvwjvE4liWPlFnvH4ZhRDfNZ9FOpdkD/BU5gAIA3VS3vOQrQ5BjKgbO3kxebKhHdHcNUHLqxQYSoxee9UwgA=="
