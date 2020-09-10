@@ -6,11 +6,15 @@
 	"root": true,
 	"env": {
 		"browser": true,
-		"es6": true
+		"es6": true,
+		"node": true
 	},
+	"parser": "babel-eslint",
 	"parserOptions": {
 		"ecmaVersion": 11
 	},
+	"plugins": ["html"],
+	"ignorePatterns": ["dist/**"],
 	"rules": {
 		"brace-style": [
 			"error",

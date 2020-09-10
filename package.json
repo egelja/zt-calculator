@@ -1,23 +1,41 @@
 {
-  "name": "zt-calculator",
-  "version": "1.0.0",
-  "description": "A website-embedable calculator for Device ZT.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://bitbucket.org/NinoMaruszewski/zt-calculator/src"
-  },
-  "author": "Nino Maruszewski and Alem Snyder",
-  "license": "MIT",
-  "prettier": {
-    "tabWidth": 4
-  },
-  "devDependencies": {
-    "eslint-config-prettier": "^6.11.0",
-    "prettier": "2.1.1"
-  },
-  "dependencies": {}
+    "name": "zt-calculator",
+    "version": "1.0.0",
+    "description": "A website-embedable calculator for Device ZT.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "webpack:dev": "webpack --config webpack.config.js -d",
+        "webpack:dist": "webpack --config webpack.config.js -p",
+        "build": "npm run lint && npm run webpack:dev",
+        "dist": "npm run lint && npm run webpack:dist",
+        "lint": "eslint .\\src\\"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://bitbucket.org/NinoMaruszewski/zt-calculator/src"
+    },
+    "author": "Nino Maruszewski and Alem Snyder",
+    "license": "MIT",
+    "prettier": {
+        "tabWidth": 4
+    },
+    "devDependencies": {
+        "@babel/core": "^7.0.0",
+        "@babel/preset-env": "^7.0.0",
+        "babel-eslint": "^10.1.0",
+        "babel-loader": "^8.1.0",
+        "css-loader": "^4.3.0",
+        "eslint": "^7.8.1",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-html": "^6.1.0",
+        "prettier": "2.1.1",
+        "style-loader": "^1.2.1",
+        "webpack": "^4.44.1",
+        "webpack-cli": "^3.3.12"
+    },
+    "dependencies": {
+        "html-webpack-plugin": "^4.4.1",
+        "papaparse": "^5.3.0"
+    }
 }

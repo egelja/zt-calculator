@@ -1,8 +1,10 @@
+import { Papa } from "papaparse";
+import "../css/styles.css";
+
 const input = document.querySelector("#CSVFile");
 
 // eslint-disable-next-line no-unused-vars
 input.addEventListener("change", (_e) => {
-    // eslint-disable-next-line no-undef
     Papa.parse(input.files[0], {
         complete: (results) => {
             console.log(results.data);
@@ -12,7 +14,7 @@ input.addEventListener("change", (_e) => {
                 console.log(numResults);
                 setToFile(numResults);
             } else {
-                window.alert('Invalid CSV!');
+                window.alert("Invalid CSV!");
             }
         },
         dynamicTyping: true,
@@ -30,9 +32,7 @@ function setToFile(parsedCSV) {
     console.log(parsedCSV.data);
 }
 
-// eslint-disable-next-line no-unused-vars
-function setToText() {
-    // eslint-disable-next-line no-undef
+export function setToText() {
     Papa.parse(document.getElementById("CSVText").value, {
         complete: (results) => {
             document.getElementById("output").innerHTML = JSON.stringify(
@@ -73,7 +73,11 @@ function cleanCSV(parsedCSV) {
     }
 
     if (errorRows.length && numericResults.length) {
-        window.alert(`You have errors on rows:\n${errorRows.join(', ')}.\nThese rows have now been pruned from the CSV.`);
+        window.alert(
+            `You have errors on rows:\n${errorRows.join(
+                ", "
+            )}.\nThese rows have now been pruned from the CSV.`
+        );
     }
     return numericResults;
 }
