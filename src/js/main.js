@@ -1,14 +1,15 @@
-import { Papa } from "papaparse";
+import * as Papa from "papaparse";
 import "../css/styles.css";
 
-const input = document.querySelector("#CSVFile");
+const uploadCSVButton = document.querySelector("#CSVFile");
+const pasteCSVButton = document.querySelector("#setCSVPaste");
 
 // eslint-disable-next-line no-unused-vars
-input.addEventListener("change", (_e) => {
-    Papa.parse(input.files[0], {
+uploadCSVButton.addEventListener("change", (_e) => {
+    Papa.parse(uploadCSVButton.files[0], {
         complete: (results) => {
             console.log(results.data);
-            let numResults = cleanCSV(results.data);
+            const numResults = cleanCSV(results.data);
 
             if (numResults.length) {
                 console.log(numResults);
@@ -23,6 +24,11 @@ input.addEventListener("change", (_e) => {
     });
 });
 
+// eslint-disable-next-line no-unused-vars
+pasteCSVButton.addEventListener("click", (_e) => {
+    setToText();
+});
+
 function setToFile(parsedCSV) {
     document.getElementById("output").innerHTML = JSON.stringify(
         parsedCSV.slice(0, 3),
@@ -32,15 +38,22 @@ function setToFile(parsedCSV) {
     console.log(parsedCSV.data);
 }
 
-export function setToText() {
+// eslint-disable-next-line no-unused-vars
+function setToText() {
     Papa.parse(document.getElementById("CSVText").value, {
         complete: (results) => {
-            document.getElementById("output").innerHTML = JSON.stringify(
-                results.data.slice(0, 3),
-                null,
-                4
-            );
-            console.log(results.data);
+            const numResults = cleanCSV(results.data);
+
+            if (numResults.length) {
+                document.getElementById("output").innerHTML = JSON.stringify(
+                    numResults.slice(0, 3),
+                    null,
+                    4
+                );
+                console.log(numResults);
+            } else {
+                window.alert("Invalid CSV!");
+            }
         },
         dynamicTyping: true,
         worker: true,
@@ -74,9 +87,9 @@ function cleanCSV(parsedCSV) {
 
     if (errorRows.length && numericResults.length) {
         window.alert(
-            `You have errors on rows:\n${errorRows.join(
-                ", "
-            )}.\nThese rows have now been pruned from the CSV.`
+            `You have errors on rows:\n${errorRows
+                .map((element) => element + 1)
+                .join(", ")}.\nThese rows have now been pruned from the CSV.`
         );
     }
     return numericResults;

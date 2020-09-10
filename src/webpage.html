@@ -27,7 +27,7 @@
 
     <br>
 
-    <button type="button" onclick='setToText()'>Set To Text</button>
+    <button type="button" id='setCSVPaste'>Set To Text</button>
 
     <br>
 
@@ -39,8 +39,8 @@
     <button id="hidePaste" style="display: none;" onclick="hideElement('CSVText', 'showPaste', 'hidePaste')">Hide CSV
         PasteBox</button>
     <div>
-        <input id="CSVText" type="text" name="CSVText" value="Paste CSV"
-            style="font-size: 12pt; height: 420px; width: 600px; display: none;">
+        <textarea name="CSVText" id="CSVText" cols="30" rows="10"
+            style="display: none;font-size: 12pt; height: 420px; width: 600px;">Paste CSV</textarea>
     </div>
 
     <br>
