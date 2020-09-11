@@ -1,4 +1,5 @@
 import * as Papa from "papaparse";
+// import { saveAs } from "file-saver";
 import "../css/styles.css";
 
 const uploadCSVButton = document.querySelector("#CSVFile");
@@ -26,20 +27,6 @@ uploadCSVButton.addEventListener("change", (_e) => {
 
 // eslint-disable-next-line no-unused-vars
 pasteCSVButton.addEventListener("click", (_e) => {
-    setToText();
-});
-
-function setToFile(parsedCSV) {
-    document.getElementById("output").innerHTML = JSON.stringify(
-        parsedCSV.slice(0, 3),
-        null,
-        4
-    );
-    console.log(parsedCSV.data);
-}
-
-// eslint-disable-next-line no-unused-vars
-function setToText() {
     Papa.parse(document.getElementById("CSVText").value, {
         complete: (results) => {
             const numResults = cleanCSV(results.data);
@@ -59,6 +46,15 @@ function setToText() {
         worker: true,
         skipEmptyLines: false,
     });
+});
+
+function setToFile(parsedCSV) {
+    document.getElementById("output").innerHTML = JSON.stringify(
+        parsedCSV.slice(0, 3),
+        null,
+        4
+    );
+    console.log(parsedCSV.data);
 }
 
 function cleanCSV(parsedCSV) {
