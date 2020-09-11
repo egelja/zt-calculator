@@ -28,31 +28,49 @@
 
     <br>
 
+    <p>First, give the calculator a file:</p>
+
     <button type="button" id='setCSVPaste'>Set To Text</button>
 
-    <br>
+    <button id="showPaste" onclick="showElement('CSVText', 'showPaste', 'hidePaste')
+                                    showElement('showPreview', 'showPaste', 'hidePaste')">Show
+        CSV PasteBox</button>
+    <button id="hidePaste" style="display: none;" onclick="hideElement('CSVText', 'showPaste', 'hidePaste')
+                                                           hideElement('showPreview', 'showPaste', 'hidePaste')
+                                                           hideElement('hidePreview', 'showPaste', 'hidePaste')
+                                                           hideElement('CSVPreview', 'showPaste', 'hidePaste')">
+        Hide CSV PasteBox</button>
 
     <input id="CSVFile" type="file" name="CSVFile" accept=".csv">
+    <div class="row">
+        <div class="col">
+            <textarea name="CSVText" id="CSVText" cols="30" rows="10"
+                style="display: none;font-size: 12pt; height: 420px; width: 600px;">Paste CSV</textarea>
 
-    <br>
-
-    <button id="showPaste" onclick="showElement('CSVText', 'showPaste', 'hidePaste')">Show CSV PasteBox</button>
-    <button id="hidePaste" style="display: none;" onclick="hideElement('CSVText', 'showPaste', 'hidePaste')">Hide CSV
-        PasteBox</button>
-    <div>
-        <textarea name="CSVText" id="CSVText" cols="30" rows="10"
-            style="display: none;font-size: 12pt; height: 420px; width: 600px;">Paste CSV</textarea>
+            <button id="showPreview" onclick="showElement('CSVPreview', 'showPreview', 'hidePreview')"
+                style="display: none;">Show CSV
+                Preview</button>
+            <button id="hidePreview" onclick="hideElement('CSVPreview', 'showPreview', 'hidePreview')"
+                style="display: none;">Hide CSV Preview</button>
+        </div>
+        <div class="col">
+            <span id="CSVPreview" style="white-space: pre-wrap; display: none;">CSV Preview</span>
+        </div>
     </div>
 
     <br>
 
-    <span id="output" style="white-space: pre-wrap">output text</span>
+    <button id="calculate" type="button" onclick="document.getElementById('showCharts').style.display = ''">Calculate!</button>
+
+    <button id="downloadCalculatedCSV" type="button" style="display: none;">Download Calculated CSV.</button>
+
+    <button id="showCharts" onclick="showElement('charts', 'showCharts', 'hideCharts')" style="display: none;">Show
+        Charts</button>
+    <button id="hideCharts" onclick="hideElement('charts', 'showCharts', 'hideCharts')" style=" display: none;">Hide
+        Charts</button>
 
     <br>
 
-    <button id="showCharts" onclick="showElement('charts', 'showCharts', 'hideCharts')">Show Charts</button>
-    <button id="hideCharts" onclick="hideElement('charts', 'showCharts', 'hideCharts')" style="display: none;">Hide
-        Charts</button>
 
     <div id="charts" style="display: none;">
         <div class="row">

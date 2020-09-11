@@ -1,10 +1,11 @@
 var path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const WorkerPlugin = require("worker-plugin");
 
 module.exports = {
     entry: "./src/js/main.js",
     output: {
-        filename: "main.js",
+        filename: "[name].bundle.js",
         path: path.resolve(__dirname, "dist"),
     },
     stats: { colors: true },
@@ -37,6 +38,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: "./webpage.html",
             template: "./src/webpage.html",
+        }),
+        new WorkerPlugin({
+            globalObject: false
         }),
     ],
 };

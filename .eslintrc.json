@@ -14,7 +14,7 @@
 		"ecmaVersion": 11
 	},
 	"plugins": ["html"],
-	"ignorePatterns": ["dist/**"],
+	"ignorePatterns": ["dist/**", "src/js/zt-calculator.js"],
 	"rules": {
 		"brace-style": [
 			"error",

@@ -1,20 +1,32 @@
 import * as Papa from "papaparse";
-// import { saveAs } from "file-saver";
+import { saveAs } from "file-saver";
+const CSV = require("csv-string");
 import "../css/styles.css";
 
+// Create web worker:
+const calcWorker = new Worker("./zt-calculator.js", { type: "module" });
+calcWorker.onmessage = (e) => {
+    console.log(e.data);
+    window.ztResults =
+        "Temperature,Resistivity,Seebeck,Thermal Conductivity,zT,max Red efficiency,s,u,Red efficiency,Phi,efficiency,ZT\n" +
+        CSV.stringify(e.data);
+    document.querySelector("#downloadCalculatedCSV").style.display = "";
+};
+
+// Button bindings:
 const uploadCSVButton = document.querySelector("#CSVFile");
 const pasteCSVButton = document.querySelector("#setCSVPaste");
+const calcButton = document.querySelector("#calculate");
+const downloadButton = document.querySelector("#downloadCalculatedCSV");
 
 // eslint-disable-next-line no-unused-vars
 uploadCSVButton.addEventListener("change", (_e) => {
     Papa.parse(uploadCSVButton.files[0], {
         complete: (results) => {
-            console.log(results.data);
-            const numResults = cleanCSV(results.data);
+            window.numResults = cleanCSV(results.data);
 
-            if (numResults.length) {
-                console.log(numResults);
-                setToFile(numResults);
+            if (window.numResults.length) {
+                showCSVPreview(window.numResults);
             } else {
                 window.alert("Invalid CSV!");
             }
@@ -29,15 +41,10 @@ uploadCSVButton.addEventListener("change", (_e) => {
 pasteCSVButton.addEventListener("click", (_e) => {
     Papa.parse(document.getElementById("CSVText").value, {
         complete: (results) => {
-            const numResults = cleanCSV(results.data);
+            window.numResults = cleanCSV(results.data);
 
-            if (numResults.length) {
-                document.getElementById("output").innerHTML = JSON.stringify(
-                    numResults.slice(0, 3),
-                    null,
-                    4
-                );
-                console.log(numResults);
+            if (window.numResults.length) {
+                showCSVPreview(window.numResults);
             } else {
                 window.alert("Invalid CSV!");
             }
@@ -48,13 +55,25 @@ pasteCSVButton.addEventListener("click", (_e) => {
     });
 });
 
-function setToFile(parsedCSV) {
-    document.getElementById("output").innerHTML = JSON.stringify(
+// eslint-disable-next-line no-unused-vars
+calcButton.addEventListener("click", (_e) => {
+    calcWorker.postMessage(window.numResults);
+});
+
+// eslint-disable-next-line no-unused-vars
+downloadButton.addEventListener("click", (_e) => {
+    const blobCSV = new Blob([window.ztResults], {
+        type: "text/plain;charset=utf-8",
+    });
+    saveAs(blobCSV, "calculatedZT.csv");
+});
+
+function showCSVPreview(parsedCSV) {
+    document.getElementById("CSVPreview").innerHTML = JSON.stringify(
         parsedCSV.slice(0, 3),
         null,
         4
     );
-    console.log(parsedCSV.data);
 }
 
 function cleanCSV(parsedCSV) {
