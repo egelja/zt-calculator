@@ -60,9 +60,9 @@
 
     <br>
 
-    <button id="calculate" type="button" onclick="document.getElementById('showCharts').style.display = ''">Calculate!</button>
+    <button id="calculate" type="button">Calculate!</button>
 
-    <button id="downloadCalculatedCSV" type="button" style="display: none;">Download Calculated CSV.</button>
+    <button id="downloadCalculatedCSV" type="button" style="display: none;">Download Calculated CSV</button>
 
     <button id="showCharts" onclick="showElement('charts', 'showCharts', 'hideCharts')" style="display: none;">Show
         Charts</button>
@@ -75,41 +75,41 @@
     <div id="charts" style="display: none;">
         <div class="row">
             <div class="col">
-                Chart 1
+                <canvas id='chart1'></canvas>
             </div>
             <div class="col">
-                Chart 2
+                <canvas id='chart2'></canvas>
             </div>
             <div class="col">
-                Chart 3
+                <canvas id="chart3"></canvas>
             </div>
             <div class="col">
-                Chart 4
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                Chart 5
-            </div>
-            <div class="col">
-                Chart 6
-            </div>
-            <div class="col">
-                Chart 7
-            </div>
-            <div class="col">
-                Chart 8
+                <canvas id="chart4"></canvas>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                Chart 9
+                <canvas id="chart5"></canvas>
             </div>
             <div class="col">
-                Chart 10
+                <canvas id="chart6"></canvas>
             </div>
             <div class="col">
-                Chart 11
+                <canvas id="chart7"></canvas>
+            </div>
+            <div class="col">
+                <canvas id="chart8"></canvas>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <canvas id="chart9"></canvas>
+            </div>
+            <div class="col">
+                <canvas id="chart10"></canvas>
+            </div>
+            <div class="col">
+                <canvas id="chart11"></canvas>
             </div>
         </div>
     </div>

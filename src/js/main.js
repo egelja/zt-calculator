@@ -1,6 +1,7 @@
 import * as Papa from "papaparse";
 import { saveAs } from "file-saver";
-const CSV = require("csv-string");
+import * as CSV from "csv-string";
+import makeCharts from "./charts.js";
 import "../css/styles.css";
 
 // Create web worker:
@@ -8,9 +9,12 @@ const calcWorker = new Worker("./zt-calculator.js", { type: "module" });
 calcWorker.onmessage = (e) => {
     console.log(e.data);
     window.ztResults =
-        "Temperature,Resistivity,Seebeck,Thermal Conductivity,zT,max Red efficiency,s,u,Red efficiency,Phi,efficiency,ZT\n" +
+        "Temperature (K),Resistivity,Seebeck,Thermal Conductivity,zT,Maximum Reduced Efficiency,s (1/V),u (1/V),Reduced Efficiency,Phi (V),Efficiency,ZT\n" +
         CSV.stringify(e.data);
     document.querySelector("#downloadCalculatedCSV").style.display = "";
+    document.getElementById("showCharts").style.display = "";
+
+    makeCharts(window.ztResults);
 };
 
 // Button bindings:
@@ -57,7 +61,9 @@ pasteCSVButton.addEventListener("click", (_e) => {
 
 // eslint-disable-next-line no-unused-vars
 calcButton.addEventListener("click", (_e) => {
-    calcWorker.postMessage(window.numResults);
+    if (typeof window.numResults !== "undefined") {
+        calcWorker.postMessage(window.numResults);
+    }
 });
 
 // eslint-disable-next-line no-unused-vars

@@ -5,11 +5,13 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "webpack:dev": "webpack --config webpack.config.js -d -w",
-        "webpack:dist": "webpack --config webpack.config.js -p",
         "build": "npm run webpack:dev",
+        "watch": "npm run webpack:watch",
         "dist": "npm run lint && npm run webpack:dist",
-        "lint": "eslint .\\src\\"
+        "lint": "eslint .\\src\\",
+        "webpack:dev": "webpack --config webpack.config.js -d",
+        "webpack:watch": "webpack --config webpack.config.js -d -w",
+        "webpack:dist": "webpack --config webpack.config.js -p"
     },
     "repository": {
         "type": "git",
@@ -37,6 +39,7 @@
         "worker-plugin": "^5.0.0"
     },
     "dependencies": {
+        "chart.js": "^2.9.3",
         "csv-string": "^4.0.1",
         "file-saver": "^2.0.2",
         "html-webpack-plugin": "^4.4.1",

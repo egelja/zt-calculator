@@ -3,12 +3,20 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WorkerPlugin = require("worker-plugin");
 
 module.exports = {
-    entry: "./src/js/main.js",
+    entry: {
+        main: "./src/js/main.js",
+        charts: "./src/js/charts.js",
+    },
     output: {
         filename: "[name].bundle.js",
         path: path.resolve(__dirname, "dist"),
     },
     stats: { colors: true },
+    optimization: {
+        splitChunks: {
+            chunks: "all",
+        },
+    },
     module: {
         rules: [
             {
@@ -40,7 +48,7 @@ module.exports = {
             template: "./src/webpage.html",
         }),
         new WorkerPlugin({
-            globalObject: false
+            globalObject: false,
         }),
     ],
 };
