@@ -1,6 +1,8 @@
 import * as Papa from "papaparse";
 import { saveAs } from "file-saver";
-const CSV = require("csv-string");
+import * as CSV from "csv-string";
+import makeCharts from "./charts.js";
+import "../css/main.css";
 import "../css/styles.css";
 
 // Create web worker:

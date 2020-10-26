@@ -1,0 +1,164 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- InstanceBegin template="/Templates/subpage.dwt" codeOutsideHTMLIsLocked="false" -->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Thermoelectrics at Northwestern</title>
+    <!-- InstanceEndEditable -->
+    <!-- <link href="../css/main.css" rel="stylesheet" type="text/css" /> -->
+    <!-- InstanceBeginEditable name="head" -->
+    <!-- InstanceEndEditable -->
+</head>
+
+<body>
+    <a name="top" id="top"></a>
+    <div id="container">
+        <!-- InstanceBeginEditable name="banner" --><img src="../graphics/body/banner5.jpg" alt="Thermoelectrics "
+            width="960" height="190" border="0" usemap="#Map" />
+        <map name="Map" id="Map">
+            <area shape="rect" coords="77,2,856,26" href="http://www.northwestern.edu" />
+            <area shape="rect" coords="117,79,462,118" href="http://thermoelectrics.matsci.northwestern.edu" />
+            <area shape="circle" coords="69,110,37" href="http://thermoelectrics.matsci.northwestern.edu" />
+        </map>
+        <!-- InstanceEndEditable -->
+        <div id="nav-bar">
+            <ul id="nav-main">
+                <li><a href="../index.html" class="mainlink" title="Home">Home</a></li>
+                <li><a href="../thermoelectrics/index.html" class="mainlink" title="Thermoelectrics">Thermoelectrics</a>
+                </li>
+                <li><a href="index.html" class="mainlink" title="Research">Research</a></li>
+                <li><a href="../publications/index.html" class="mainlink" title="Publications">Publications</a></li>
+                <li><a href="../people/index.html" class="mainlink" title="People">People</a></li>
+                <li class="nobull"><a href="../contact/index.html" class="mainlink" title="Contact">Contact</a></li>
+            </ul>
+        </div>
+        <!-- InstanceBeginEditable name="contentmain" -->
+        <div id="content-subpage">
+            <ul>
+                <h1>Procedure to Calculate Device ZT from materials properties</h1>
+                <p>The efficiency of a Thermoelectrc Device is typically reported as a function of ZT (Device Figure of
+                    Merit) </p>
+                <p>&nbsp;</p>
+                <p align="center"><img src="../graphics/thermoelectrics/effeqn.gif" width="216" height="62" /></p>
+                <p align="center">&nbsp;</p>
+                <p>Here we show you how to calculate ZT from thermoelectric materials properties that are temperature
+                    dependent as described in [1]. You will need the thermoelectric properties of your material as a
+                    function of temperature from Tc (cold side temperature) to Th (hot side temperature).</p>
+                <p>&nbsp;</p>
+                <h2 id="data" name="data">1. Place your data into a spreadsheet.</h2>
+                <p>Create a spreadsheet with the following header:<br>
+                    <code>Tempparture (K),r (mOhm cm),Seebeck (uV/K),Thermal Conductivity (milliwatts/cm*K))</code>.<br>
+                    After that, place your data into the spreadsheet in the appropriate columns, and save it as a CSV
+                    file.
+                </p>
+                <br>
+                <h2 id="upload" name="upload">2. Now, upload your data.</h2>
+                <p>Click on the <code>Choose File</code> button below and upload your file. If that fails, try using the
+                    pastebox.</p>
+
+                <button id="showPaste" onclick="showElement('CSVText', 'showPaste', 'hidePaste')
+                                                showElement('showPreview', 'showPaste', 'hidePaste')
+                                                showElement('setCSVPaste', 'showPaste', 'hidePaste')">Show
+                    CSV PasteBox</button>
+                <button id="hidePaste" style="display: none;"
+                    onclick="hideElement('CSVText', 'showPaste', 'hidePaste')
+                                                                       hideElement('showPreview', 'showPaste', 'hidePaste')
+                                                                       hideElement('hidePreview', 'showPaste', 'hidePaste')
+                                                                       hideElement('CSVPreview', 'showPaste', 'hidePaste')
+                                                                       hideElement('setCSVPaste', 'showPaste', 'hidePaste')">
+                    Hide CSV PasteBox</button>
+
+                <input id="CSVFile" type="file" name="CSVFile" accept=".csv">
+                <div class="row">
+                    <div class="col">
+                        <textarea name="CSVText" id="CSVText" cols="30" rows="10"
+                            style="display: none;font-size: 12pt; height: 420px; width: 600px;">Paste CSV</textarea>
+
+                        <button type="button" id='setCSVPaste' style="display: none;">Set To Text</button>
+
+                        <button id="showPreview" onclick="showElement('CSVPreview', 'showPreview', 'hidePreview')"
+                            style="display: none;">Show CSV
+                            Preview</button>
+                        <button id="hidePreview" onclick="hideElement('CSVPreview', 'showPreview', 'hidePreview')"
+                            style="display: none;">Hide CSV Preview</button>
+                    </div>
+                    <div class="col">
+                        <span id="CSVPreview" style="white-space: pre-wrap; display: none;">CSV Preview</span>
+                    </div>
+                </div>
+                <br>
+                <h2 id="calculate" name="calculate">3. Calculate!</h2>
+                <p>Now click the button below to calculate <em>ZT</em>!</p>
+
+                <br>
+                <h2>References</h2>
+                <p>The following journal article gives a complete description of the calculation for reference</p>
+                <p>[1] G. J. Snyder, A. H. Snyder &quot;Figure of Merit ZT of a Thermoelectric Device Defined from
+                    Materials Properties&quot;
+                    <a href="http://pubs.rsc.org/en/Content/ArticleLanding/2017/EE/C7EE02007D#!divAbstract">Energy and
+                        Environmental Science 10, 2280 (2017)</a></p>
+                <p>&nbsp;</p>
+                <p>Further details and derivation of the calculations can be found in</p>
+                <p>[2] G. J. Snyder &quot;Thermoelectric Power Generation: Efficiency and Compatibility&quot; Chapter 9,
+                    in <a
+                        href="https://www.crcpress.com/Thermoelectrics-Handbook-Macro-to-Nano/Rowe/p/book/9780849322648">Thermoelectrics
+                        Handbook: Macro to Nano</a> edited by D. M. Rowe, CRC Press (2006).</p>
+                <p>&nbsp;</p>
+                <p>[3] A python and Java Script version of the calculator written by A. H. Snyder can be downloaded from
+                    <a href="https://github.com/AlemSnyder/ZT-calculator">GitHub</a>. Link to the <a
+                        href="Web/webpage.html">JavaScript version</a> of the calculator.</p>
+                <p>&nbsp;</p>
+
+            </ul>
+        </div><!-- InstanceEndEditable -->
+        <!-- InstanceBeginEditable name="submenu" -->
+        <div id="content-submenu">
+            <ul id="submenulist">
+                <li><a href="../CalculationSupport/ZTefficiencyCalculator.xls">Download</a></li>
+                <li><a href="#data">Insert Data</a></li>
+                <li><a href="#upload">Upload Data</a></li>
+                <li><a href="#calculate">Calculate <em>ZT</em></a></li>
+            </ul>
+        </div>
+
+        <!-- InstanceEndEditable -->
+        <div id="content-footer" class="clear-float">
+            <div id="content-logo"><a href="http://www.northwestern.edu"><img
+                        src="../graphics/logos/northwesternlogo.gif" alt="Northwestern Logo" width="100"
+                        height="100" /></a></div>
+            <div id="content-footertext"> <a href="http://www.matsci.northwestern.edu/">Materials Science and
+                    Engineering</a> | <a href="http://www.mccormick.northwestern.edu">McCormick School of
+                    Engineering</a> | <a href="../contact/index.html">Contact Us</a><br />
+                <p>
+                    <script type="text/javascript">
+< !--
+                            document.write('&copy;', new Date().getFullYear(), ' Northwestern University.');
+// -->
+
+                    </script>
+                    All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+    <p>&nbsp;</p>
+    <script type="text/javascript">
+        /* eslint-disable no-unused-vars */
+        function showElement(elementId, showButtonId, hideButtonId) {
+            document.getElementById(elementId).style.display = '';
+            document.getElementById(showButtonId).style.display = 'none';
+            document.getElementById(hideButtonId).style.display = '';
+        }
+
+        function hideElement(elementId, showButtonId, hideButtonId) {
+            document.getElementById(elementId).style.display = 'none';
+            document.getElementById(showButtonId).style.display = '';
+            document.getElementById(hideButtonId).style.display = 'none';
+        }
+    </script>
+</body>
+<!-- InstanceEnd -->
+
+</html>

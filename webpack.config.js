@@ -36,8 +36,12 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
+            filename: "./webpage_plain.html",
+            template: "./src/webpage/plain.html",
+        }),
+        new HtmlWebpackPlugin({
             filename: "./webpage.html",
-            template: "./src/webpage.html",
+            template: "./src/webpage/fancy.html",
         }),
         new WorkerPlugin({
             globalObject: false
