@@ -7,7 +7,9 @@ function calculate(csv) {
 
     const calculatedCSV = CalculateData(csv);
     console.log("Calculated CSV: ", calculatedCSV);
-    return calculatedCSV;
+
+    const maxU = optimizeUForDefEff(csv);
+    return [calculatedCSV, maxU];
 }
 
 function optimizeUForDefEff(data) {

@@ -2,7 +2,7 @@
 import Chart from "chart.js";
 import * as Papa from "papaparse";
 
-export default function makeCharts(rawCSV) {
+export default function makeCharts(rawCSV, maxU) {
     Papa.parse(rawCSV, {
         complete: (results) => {
             const csv = results.data;
@@ -51,7 +51,7 @@ function toDataPoints(data, keyX, keyY) {
     return points;
 }
 
-function genChart(csv, xLabel, yLabel, canvasID) {
+function genChart(csv, xLabel, yLabel, canvasID, maxU = {}) {
     new Chart(canvasID, {
         data: {
             datasets: [
@@ -62,6 +62,12 @@ function genChart(csv, xLabel, yLabel, canvasID) {
                         Math.random() * 16777215
                     ).toString(16)}`,
                 },
+                {
+                    data: maxU,
+                    backgroundColor: `#${Math.floor(
+                        Math.random() * 16777215
+                    ).toString(16)}`,
+                }
             ],
         },
         type: "scatter",

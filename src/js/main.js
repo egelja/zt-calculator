@@ -10,11 +10,12 @@ calcWorker.onmessage = (e) => {
     console.log(e.data);
     window.ztResults =
         "Temperature (K),Resistivity,Seebeck,Thermal Conductivity,zT,Maximum Reduced Efficiency,s (1/V),u (1/V),Reduced Efficiency,Phi (V),Efficiency,ZT\n" +
-        CSV.stringify(e.data);
+        CSV.stringify(e.data[0]);
+    let maxU = e.data[1];
     document.querySelector("#downloadCalculatedCSV").style.display = "";
     document.getElementById("showCharts").style.display = "";
 
-    makeCharts(window.ztResults);
+    makeCharts(window.ztResults, maxU);
 };
 
 // Button bindings:

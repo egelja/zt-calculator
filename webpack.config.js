@@ -1,6 +1,7 @@
 var path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WorkerPlugin = require("worker-plugin");
+const ESLintPlugin = require("eslint-webpack-plugin");
 
 module.exports = {
     entry: {
@@ -19,16 +20,6 @@ module.exports = {
     },
     module: {
         rules: [
-            {
-                enforce: "pre",
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: "eslint-loader",
-                options: {
-                    failOnError: true,
-                    failOnWarning: true,
-                },
-            },
             {
                 test: /\.m?js$/,
                 exclude: /(node_modules|bower_components)/,
@@ -49,6 +40,10 @@ module.exports = {
         }),
         new WorkerPlugin({
             globalObject: false,
+        }),
+        new ESLintPlugin({
+            failOnError: true,
+            failOnWarning: true,
         }),
     ],
 };
