@@ -12,6 +12,7 @@ function calculate(csv) {
     return [calculatedCSV, maxU];
 }
 
+// Everything past here from @AlemSnyder
 function optimizeUForDefEff(data) {
     //garbage optimization:
     var Us = [0.1, 4];
